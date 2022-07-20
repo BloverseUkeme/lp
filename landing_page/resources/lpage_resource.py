@@ -19,8 +19,8 @@ def generate_request_token():
 
     request_token_url = 'https://api.twitter.com/oauth/request_token'
 
-    app_callback_url =  "http://localhost:5002/callback"
-    # app_callback_url = "http://65.21.61.196:5002/callback"
+    # app_callback_url =  "http://localhost:5002/callback"
+    app_callback_url = "http://65.108.94.53:5002/callback"
 
     consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
 
