@@ -19,7 +19,7 @@ def generate_request_token():
     request_token_url = 'https://api.twitter.com/oauth/request_token'
 
     # app_callback_url =  "http://localhost:5002/callback"
-    app_callback_url = "http://65.21.61.196:5002/callback"
+    app_callback_url = "http://65.108.94.53:5002/callback"
 
     consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
 
@@ -27,7 +27,7 @@ def generate_request_token():
     resp, content = client.request(request_token_url, "POST", body=urllib.parse.urlencode({
                                     "oauth_callback": app_callback_url}))
 
-
+    
     if resp['status'] != '200':
         error_message = 'Invalid response, status {status}, {message}'.format(
             status=resp['status'], message=content.decode('utf-8'))
