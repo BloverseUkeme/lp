@@ -61,6 +61,7 @@
                   <p class="u-custom-font u-font-source-sans-pro u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-3"> Bloverse helps you grow your brand by automatically posting your generated videos to Instagram, Tiktok and Youtube. We pick trending hashtags to maximise the reach of your content and also provide analytic on content performance.</p>
                   <a href="https://api.twitter.com/oauth/authorize?oauth_token={{oauth_token}}" class="u-btn u-btn-round u-button-style u-hover-palette-2-base u-palette-1-base u-radius-50 u-btn-1"> Sign Up with twitter&nbsp;&nbsp;<span class="u-file-icon u-icon u-icon-1"><img src="/static/images/twitter_icon.png" alt=""></span>
                   </a>
+                  <div class="u-custom-font u-font-source-sans-pro u-hover-feature u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-palette-1-base u-text-2">  
                     {% with messages = get_flashed_messages() %}
                     {% if messages %}
                       {% for message in messages %}
@@ -68,6 +69,8 @@
                       {% endfor %}
                     {% endif %}
                 {% endwith %}
+                  </div>
+                    
 
 
 

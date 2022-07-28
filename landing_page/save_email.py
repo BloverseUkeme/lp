@@ -72,7 +72,7 @@ def save_twitter_handle_to_db(handle, twitter_email=""):
                 "email": twitter_email
             }
             save_to_mongo_db(data, collection)
-        flash('Twitter Authentication successful')
+        flash('Twitter Authentication successful', "info")
         return redirect(url_for("landing_page.home"))
     
     else:
