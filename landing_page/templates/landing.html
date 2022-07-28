@@ -50,6 +50,22 @@
 
 
     <section class="u-align-center u-clearfix u-image u-image-contain u-section-1" id="carousel_bb64" data-image-width="298" data-image-height="262">
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert"></div>
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+            {% endfor %}
+          {% endif %}
+      {% endwith %}
+
+
+
+
       <div class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xs u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
@@ -63,7 +79,7 @@
                   </a>
               
 
-                    {% with messages = get_flashed_messages() %}
+                    <!-- {% with messages = get_flashed_messages() %}
                     {% if messages %}
                       {% for message in messages %}
                       <div class="alert alert-warning alert-dismissible fade show" role="alert"></div>
@@ -71,10 +87,10 @@
                           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
       
-                      {% endfor %}
-                    {% endif %}
-                {% endwith %}
-                  </div>
+                          {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+               -->
 
 
                   <p class="infinite u-custom-font u-font-source-sans-pro u-text u-text-default-lg u-text-default-md u-text-default-sm u-text-default-xs u-text-palette-1-base u-text-4" data-animation-name="pulse" data-animation-duration="1000" data-animation-direction=""> App coming soon, sign up now to get early access.</p>
