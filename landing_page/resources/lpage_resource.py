@@ -16,11 +16,10 @@ CONSUMER_SECRET = env_config("CONSUMER_SECRET")
 def generate_request_token():
 
     
-
     request_token_url = 'https://api.twitter.com/oauth/request_token'
 
-    # app_callback_url =  "http://localhost:5002/callback"
-    app_callback_url = "http://65.108.94.53:5002/callback"
+    app_callback_url =  "http://localhost:5002/callback"
+    # app_callback_url = "http://65.21.61.196:5002/callback"
 
     consumer = oauth.Consumer(CONSUMER_KEY, CONSUMER_SECRET)
 
@@ -28,10 +27,11 @@ def generate_request_token():
     resp, content = client.request(request_token_url, "POST", body=urllib.parse.urlencode({
                                     "oauth_callback": app_callback_url}))
 
+
     if resp['status'] != '200':
         error_message = 'Invalid response, status {status}, {message}'.format(
             status=resp['status'], message=content.decode('utf-8'))
-        return render_template('error.html', error_message=error_message)
+        return Response(response=render_template('error.html'))
 
     request_token = dict(urllib.parse.parse_qsl(content))
 
@@ -49,7 +49,9 @@ def generate_request_token():
 
 
 def get_mail_from_oauth_token(oauth_token, oauth_token_secret, oauth_verifier):
-    
+    import oauth2 as oauth
+    import urllib.request
+
     access_token_url = 'https://api.twitter.com/oauth/access_token'
 
 
@@ -73,7 +75,6 @@ def get_mail_from_oauth_token(oauth_token, oauth_token_secret, oauth_verifier):
 
     real_resp, real_content = real_client.request(verify_user_url , "GET")
 
-    
     twitter_json_data = json.loads(real_content.decode('utf-8'))
 
     twitter_email = twitter_json_data.get("email")
@@ -85,24 +86,15 @@ def get_mail_from_oauth_token(oauth_token, oauth_token_secret, oauth_verifier):
 
 class Home(Resource):
     def get(self):
+
         oauth_token, oauth_token_secret = generate_request_token()
-        # print(oauth_token)
-        return Response(response=render_template('index4.html', oauth_token=oauth_token))
+        return Response(response=render_template('landing.html', oauth_token=oauth_token))
 
-    # def post(self):
-    #     json_data = request.form.get("email")
-    #     print(json_data)
-
-
-    #     Response(response=render_template('index4.html'))
-    #     return redirect(request.referrer)
 
 class Email(Resource):
     def get(self):
-        # oauth_token, oauth_token_secret = generate_request_token()
-        # print(oauth_token)
-        return Response(response=render_template('index3.html'))
-        # return redirect(url_for("landing_page.email"))
+
+        return Response(response=render_template('email.html'))
 
 
     def post(self):
@@ -112,10 +104,16 @@ class Email(Resource):
 
         # save_email_to_db(json_data)
         # celery_start_save_email.apply_async((json_data,), queue="lpage")
-        Response(response=render_template('index3.html'))
+        redirect(request.referrer)
+        # return Response(response=render_template('landing.html'))
+        return redirect(url_for("landing_page.home"))
 
-        return redirect(request.referrer)
+
+
         
+
+
+
 
 
 class CallBack(Resource):
@@ -126,30 +124,18 @@ class CallBack(Resource):
         oauth_verifier = request.args.get('oauth_verifier')
         oauth_token = request.args.get('oauth_token')
 
-        oauth_token_secret = oauth_store[oauth_token]
+        try:
+            oauth_token_secret = oauth_store[oauth_token]
+        except:
+            # return render_template('error.html')
+            return Response(response=render_template('error.html'))
+
 
 
         twitter_email, handle = get_mail_from_oauth_token(oauth_token, oauth_token_secret, oauth_verifier)
-
+        print(twitter_email, handle)
         # twitter_email = None
         result = save_twitter_handle_to_db(handle, twitter_email)
 
         return result #redirect(url_for("landing_page.home"))
-
-
-
-
-
-# from flask_restful import Resource
-# from flask import request, make_response, render_template
-
-# class Registration(Resource):
-#     def post(self):
-#         print(request.form)
-#         json_data = request.form.get("e_mail")
-#         print("there")
-#         print(json_data)
-
-#         headers = {'Content-Type': 'text/html'}
-#         return make_response(render_template("index.html"), headers)
 

@@ -424,6 +424,7 @@ dfn {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  text-align: left;
 }
 mark {
   background-color: #ff0;
@@ -1184,7 +1185,7 @@ a {
 }
 .u-input {
   display: block;
-  width: 100%;
+  width: 70%;
   padding: 10px 12px;
   background-image: none;
   background-clip: padding-box;
@@ -15778,12 +15779,12 @@ p {
 }
 @media (min-width: 1400px) {
   .u-align-center-xxl {
-    text-align: center;
+    text-align: left;
   }
 }
 @media (min-width: 1200px) {
   .u-xl-mode .u-align-center-xl {
-    text-align: center;
+    text-align: left;
   }
 }
 @media (min-width: 1200px) and (max-width: 1399px) {
@@ -21860,6 +21861,7 @@ h4,
 h5,
 h6 {
   font-family: Roboto,sans-serif;
+  text-align: left
 }
 /*end-variables font-family*/
 /*begin-variables color*/
@@ -36979,7 +36981,7 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 .u-header .u-logo-image-1 {
-  width: 100%;
+  width: 250%;
   height: 100%;
 }
 

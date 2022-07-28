@@ -124,3 +124,6 @@ with open("sample.txt", "r") as outfile:
 
 
 print(aa)
+
+
+# https://express.adobe.com/sp/design/post/urn:aaid:sc:EU:6b3aface-541b-4828-b266-213ae0f7db01?workflow=quicktask
