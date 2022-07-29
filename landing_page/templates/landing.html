@@ -6,9 +6,16 @@
     <meta name="description" content="">
     <title>Bloverse</title>
     <link rel="stylesheet" href="/static/css/nicepage.css" media="screen">
-<link rel="stylesheet" href="/static/css/landing.css" media="screen">
+    <link rel="stylesheet" href="/static/css/landing.css" media="screen">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" integrity="" crossorigin="anonymous">
+
+
+
+
     <script class="u-script" type="text/javascript" src="/static/js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="/static/js/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/static/js/alert.js" defer=""></script>
+
     <meta name="generator" content="Nicepage 4.13.4, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i|Merriweather:300,300i,400,400i,700,700i,900,900i">
@@ -54,7 +61,7 @@
       {% with messages = get_flashed_messages() %}
       {% if messages %}
         {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert"></div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert"></div>
             {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
