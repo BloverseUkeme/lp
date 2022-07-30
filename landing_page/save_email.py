@@ -50,8 +50,9 @@ def save_email_to_db(email):
 
     if result is  None:
         save_to_mongo_db(search_query, collection)
-
-    flash('Twitter Authentication successful', "info")
+        flash('Twitter Authentication successful', "info")
+        
+    flash('Twitter Account ALready Registered', "info")
     return redirect(url_for("landing_page.home"))
 
 
@@ -73,7 +74,9 @@ def save_twitter_handle_to_db(handle, twitter_email=""):
                 "email": twitter_email
             }
             save_to_mongo_db(data, collection)
-        flash('Twitter Authentication successful', "info")
+            flash('Twitter Authentication successful', "info")
+
+        flash('Twitter Account ALready Registered', "info")
         return redirect(url_for("landing_page.home"))
     
     else:
