@@ -1,4 +1,5 @@
-FROM python:3.10.2-slim-buster 
+# FROM python:3.10.2-slim-buster 
+FROM python:3.9.13-slim-buster
 
 ENV INSTALL_PATH /landing_page
 RUN mkdir -p $INSTALL_PATH

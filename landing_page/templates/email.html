@@ -5,11 +5,16 @@
     <meta name="keywords" content="​and everything is perfect, Latest news, ​Travel with​ us, Do something fun, ​Travel with​ us, ​Working with a reputable travel agent takes the stress out of travel, ​Join Our Newsletter">
     <meta name="description" content="">
     <title>Bloverse</title>
+
     <link rel="stylesheet" href="/static/css/nicepage.css" media="screen">
     <link rel="stylesheet" href="/static/css/landing.css" media="screen">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css"  integrity="" crossorigin="anonymous">
+
     <!-- <link rel="stylesheet" href="/static/css/email.css" media="screen"> -->
     <script class="u-script" type="text/javascript" src="/static/js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="/static/js/nicepage.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/static/js/bootstrap.bundle.min.js" integrity="" crossorigin="anonymous"></script>
+
     <meta name="generator" content="Nicepage 4.13.4, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i|Merriweather:300,300i,400,400i,700,700i,900,900i">
@@ -51,6 +56,20 @@
 
 
     <section class="u-align-center u-clearfix u-image u-image-contain u-section-1" id="carousel_bb64" data-image-width="298" data-image-height="262">
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close"  data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+            {% endfor %}
+          {% endif %}
+      {% endwith %}
+
+
+
       <div class="u-align-left-lg u-align-left-md u-align-left-sm u-align-left-xs u-clearfix u-sheet u-sheet-1">
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">

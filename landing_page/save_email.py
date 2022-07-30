@@ -51,7 +51,8 @@ def save_email_to_db(email):
     if result is  None:
         save_to_mongo_db(search_query, collection)
 
-    return email
+    flash('Twitter Authentication successful', "info")
+    return redirect(url_for("landing_page.home"))
 
 
 
@@ -76,5 +77,6 @@ def save_twitter_handle_to_db(handle, twitter_email=""):
         return redirect(url_for("landing_page.home"))
     
     else:
+        flash("Sorry! We couldn't get Email address attached to this Account. Kindly Fill in your email", "info")
         return redirect(url_for("landing_page.email"))
 

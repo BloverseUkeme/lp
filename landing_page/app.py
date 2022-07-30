@@ -1,6 +1,8 @@
 from flask import Flask
 from landing_page.views import lpage_bp
 from celery import Celery
+from landing_page.extensions import oauth
+
 
 CELERY_TASK_LIST = [
     "landing_page.tasks.lpage",
@@ -28,6 +30,7 @@ def create_app(settings_override=None):
     app.register_blueprint(lpage_bp)
     
     app.secret_key = "lpage"
+    extensions(app)
 
     return app
 
@@ -62,3 +65,16 @@ def create_celery_app(app=None):
 
     celery.Task = ContextTask
     return celery
+
+
+
+def extensions(app):
+    """
+    Register 0 or more extensions (mutates the app passed in).
+
+    :param app: Flask application instance
+    :return: None
+    """
+    oauth.init_app(app)
+    
+    return None
