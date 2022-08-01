@@ -64,8 +64,8 @@ class Twitter(Resource):
             )
 
         # redirect_uri = url_for('twitter_auth', _external=True)
-        redirect_uri = "http://localhost:5002/twitter/auth/"
-        # redirect_uri = "http://65.108.94.53:5002/twitter/auth/"
+        # redirect_uri = "http://localhost:5002/twitter/auth/"
+        redirect_uri = "http://65.108.94.53:5002/twitter/auth/"
         
         return oauth.twitter.authorize_redirect(redirect_uri)
 
