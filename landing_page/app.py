@@ -1,7 +1,13 @@
 from flask import Flask
 from landing_page.views import lpage_bp
 from celery import Celery
-from landing_page.extensions import oauth
+from decouple import config as env_config
+
+from landing_page.extensions import oauth, mail
+
+
+MAIL_PASSWORD= env_config("MAIL_PASSWORD")
+
 
 
 CELERY_TASK_LIST = [
@@ -30,6 +36,17 @@ def create_app(settings_override=None):
     app.register_blueprint(lpage_bp)
     
     app.secret_key = "lpage"
+
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    # app.config['MAIL_PORT'] = 587
+    app.config['MAIL_PORT'] = 465
+    app.config['MAIL_USE_TLS'] = False
+    app.config['MAIL_USE_SSL'] = True
+    app.config['MAIL_USERNAME'] = 'no-reply@bloverse.com'
+    app.config['MAIL_PASSWORD'] = MAIL_PASSWORD 
+
+
+
     extensions(app)
 
     return app
@@ -76,5 +93,6 @@ def extensions(app):
     :return: None
     """
     oauth.init_app(app)
+    mail.init_app(app)
     
     return None

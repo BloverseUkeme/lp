@@ -10,3 +10,6 @@ redis==3.3.7
 urllib3==1.26.4
 Authlib==1.0.1
 requests==2.11.1
+Flask-Mail==0.9.1
+uuid==1.30
+regex==2022.3.2

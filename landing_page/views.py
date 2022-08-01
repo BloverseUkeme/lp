@@ -10,7 +10,7 @@ lpage_bp = Blueprint("landing_page", __name__)
 api = Api(lpage_bp)
 
 api.add_resource(Home, '/')
-api.add_resource(Email, '/email')
+api.add_resource(Email, '/email/<string:handle>')
 api.add_resource(Twitter, "/twitter")
 api.add_resource(Twitter_Oauth, "/twitter/auth/")
 
