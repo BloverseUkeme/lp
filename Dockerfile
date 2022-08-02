@@ -9,6 +9,10 @@ WORKDIR $INSTALL_PATH
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
+RUN chmod 644 /usr/local/share/ca-certificates/bloverse.com.pem
+RUN chmod 644 /usr/local/share/ca-certificates/bloverse.com.key
+RUN update-ca-certificates
+
 COPY . .
 
 CMD gunicorn -c "python:config.gunicorn" "landing_page.app:create_app()"
