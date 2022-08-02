@@ -5,14 +5,20 @@ services:
   website:
     build: .
     command: >
-      gunicorn -b 0.0.0.0:5002 --access-logfile - --reload "landing_page.app:create_app()"
+      gunicorn -b 0.0.0.0:5000 --access-logfile - --reload "landing_page.app:create_app()"
     restart: always
     env_file:
       - '.env'
     volumes:
       - '.:/landing_page'
     ports:
-      - '5002:5002'
+      - '5000:5000'
+
+  proxy:
+    build: proxy
+    restart: always
+    ports:
+      - "80:80"
 
   # redis:
   #   image: 'redis:3.0-alpine'
@@ -29,14 +35,6 @@ services:
   #     - '.env'
   #   volumes:
   #     - '.:/landing_page'
-
-
-  # proxy:
-  #   build: proxy
-  #   restart: always
-  #   ports:
-  #     - "81:81"
-
 
    
 # volumes:
