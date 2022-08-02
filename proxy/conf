@@ -1,17 +1,18 @@
-server {
-    listen              443 ssl;
-    server_name         www.bloverse.com;
-    ssl_certificate     /usr/local/share/ca-certificates/bloverse.com.pem;
-    ssl_certificate_key /usr/local/share/ca-certificates/bloverse.com.key;
-    location / {
-        proxy_pass http://website:5000;
-    }
-}
+// server {
+//     listen              443 ssl;
+//     server_name         www.bloverse.com;
+//     ssl_certificate     /usr/local/share/ca-certificates/bloverse.com.pem;
+//     ssl_certificate_key /usr/local/share/ca-certificates/bloverse.com.key;
+//     location / {
+//         proxy_pass http://website:5000;
+//     }
+// }
 
 
 server {
     listen   80;
-    server_name  bloverse.com;
+    // server_name  bloverse.com;
+    server_name     localhost;
     rewrite ^/(.*) https://bloverse.com/$1 permanent;
     location / {
         proxy_pass http://website:5000;
