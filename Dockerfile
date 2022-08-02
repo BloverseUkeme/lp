@@ -9,6 +9,9 @@ WORKDIR $INSTALL_PATH
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
+COPY bloverse.com.pem /usr/local/share/ca-certificates/bloverse.com.pem
+COPY bloverse.com.key /usr/local/share/ca-certificates/bloverse.com.key
+
 RUN chmod 644 /usr/local/share/ca-certificates/bloverse.com.pem
 RUN chmod 644 /usr/local/share/ca-certificates/bloverse.com.key
 RUN update-ca-certificates
