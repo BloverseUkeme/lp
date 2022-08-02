@@ -127,3 +127,28 @@ print(aa)
 
 
 # https://express.adobe.com/sp/design/post/urn:aaid:sc:EU:6b3aface-541b-4828-b266-213ae0f7db01?workflow=quicktask
+
+
+
+
+
+// server {
+//     listen              443 ssl;
+//     server_name         www.bloverse.com;
+//     ssl_certificate     /usr/local/share/ca-certificates/bloverse.com.pem;
+//     ssl_certificate_key /usr/local/share/ca-certificates/bloverse.com.key;
+//     location / {
+//         proxy_pass http://website:5000;
+//     }
+// }
+
+
+// server {
+//     listen   80;
+//     // server_name  bloverse.com;
+//     server_name     localhost;
+//     rewrite ^/(.*) https://bloverse.com/$1 permanent;
+//     location / {
+//         proxy_pass http://website:5000;
+//     }
+// }
