@@ -6,3 +6,15 @@ server {
 
     }
 }
+
+
+server {
+    listen              443 ssl;
+    server_name         bloverse.com;
+    ssl_certificate     /etc/ssl/certs/bloverse.com.pem;
+    ssl_certificate_key /etc/ssl/certs/bloverse.com.key;
+    location / {
+        proxy_pass http://website:5000;
+    }
+}
+
