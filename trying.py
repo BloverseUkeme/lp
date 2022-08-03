@@ -1,7 +1,5 @@
 # oauth_store = {}
 
-# CONSUMER_KEY="ek5jIPA1TTU94Wsrd04LxSdc9"
-# CONSUMER_SECRET="AbYLmDs5tqpoCL274o2KWvACM6fJI0WRScTaVlooRKosNxcROR"
 
 # def generate_request_token():
 
