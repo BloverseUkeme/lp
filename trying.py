@@ -132,15 +132,16 @@ print(aa)
 
 
 
-// server {
-//     listen              443 ssl;
-//     server_name         www.bloverse.com;
-//     ssl_certificate     /usr/local/share/ca-certificates/bloverse.com.pem;
-//     ssl_certificate_key /usr/local/share/ca-certificates/bloverse.com.key;
-//     location / {
-//         proxy_pass http://website:5000;
-//     }
-// }
+server {
+    listen              443 ssl;
+    server_name         bloverse.com;
+    ssl_certificate     /etc/nginx/bloverse.com.pem;
+    ssl_certificate_key /etc/nginx/bloverse.com.key;
+    location / {
+        proxy_pass http://website:5000;
+    }
+}
+
 
 
 // server {
