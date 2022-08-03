@@ -8,11 +8,11 @@ server {
 }
 
 server {
-    listen              443 ssl;
-    server_name         bloverse.com;
-    ssl_certificate     /etc/ssl/bloverse.com.pem;
-    ssl_certificate_key /etc/ssl/bloverse.com.key;
+    listen 443 ssl;
+    server_name  bloverse.com;
+    ssl_certificate /etc/nginx/certs/bloverse.com.crt;
+    ssl_certificate_key /etc/nginx/certs/bloverse.com.key;
     location / {
-        proxy_pass http://website:5000;
+        proxy_pass http://website:5000/;
     }
 }

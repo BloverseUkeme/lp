@@ -131,7 +131,10 @@ dmypy.json
 .pyre/
 
 
-
 bloverse.com.pem
 bloverse.com.key
 bloverse.com.crt
+
+.crt
+.pem
+.key

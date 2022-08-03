@@ -19,6 +19,10 @@ services:
     restart: always
     ports:
       - "80:80"
+      - "443:443"
+    volumes: 
+     - '.:/etc/nginx/certs'    
+
 
   # redis:
   #   image: 'redis:3.0-alpine'
