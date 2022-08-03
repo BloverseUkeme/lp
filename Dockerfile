@@ -9,12 +9,12 @@ WORKDIR $INSTALL_PATH
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-RUN mkdir /etc/nginx/ssl
-COPY bloverse.com.pem /etc/nginx/ssl/bloverse.com.pem
-COPY bloverse.com.key /etc/nginx/ssl/bloverse.com.key
+# RUN mkdir /etc/nginx/ssl
+COPY bloverse.com.pem /etc/nginx/bloverse.com.pem
+COPY bloverse.com.key /etc/nginx/bloverse.com.key
 
-RUN chmod 644 /etc/nginx/ssl/bloverse.com.pem
-RUN chmod 644 /etc/nginx/ssl/bloverse.com.key
+RUN chmod 644 /etc/nginx/bloverse.com.pem
+RUN chmod 644 /etc/nginx/bloverse.com.key
 # RUN update-ca-certificates
 
 COPY . .
