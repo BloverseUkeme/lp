@@ -47,7 +47,6 @@ class Twitter(Resource):
         TWITTER_CLIENT_ID = CONSUMER_KEY
         TWITTER_CLIENT_SECRET = CONSUMER_SECRET
 
-        print("here")
 
         oauth.register(
                 name='twitter',
@@ -65,7 +64,8 @@ class Twitter(Resource):
 
         # redirect_uri = url_for('twitter_auth', _external=True)
         # redirect_uri = "http://localhost:5000/twitter/auth/"
-        redirect_uri = "http://65.108.94.53:5000/twitter/auth/"
+        # redirect_uri = "http://65.108.94.53:5000/twitter/auth/"
+        redirect_uri = "http://bloverse.com/twitter/auth/"
         
         return oauth.twitter.authorize_redirect(redirect_uri)
 
