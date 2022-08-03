@@ -135,12 +135,18 @@ print(aa)
 server {
     listen              443 ssl;
     server_name         bloverse.com;
-    ssl_certificate     /etc/nginx/bloverse.com.pem;
-    ssl_certificate_key /etc/nginx/bloverse.com.key;
+    ssl_certificate     /etc/ssl/bloverse.com.pem;
+    ssl_certificate_key /etc/ssl/bloverse.com.key;
     location / {
         proxy_pass http://website:5000;
     }
 }
+
+
+
+location / {
+root /home/www/public_html/your_very_own_domain.com/public/;
+index index.html;
 
 
 
