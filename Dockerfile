@@ -9,14 +9,6 @@ WORKDIR $INSTALL_PATH
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-# RUN mkdir /etc/nginx/ssl
-COPY bloverse.com.pem /etc/ssl/certs/bloverse.com.pem
-COPY bloverse.com.key /etc/ssl/certs/bloverse.com.key
-
-RUN chmod 777 /etc/ssl/certs/bloverse.com.pem
-RUN chmod 777 /etc/ssl/certs/bloverse.com.key
-# RUN update-ca-certificates
-
 COPY . .
 
 CMD gunicorn -c "python:config.gunicorn" "landing_page.app:create_app()"
