@@ -1,7 +1,6 @@
 server {
     listen   80;
     server_name  localhost;
-    rewrite ^/(.*) http://bloverse.com/$1 permanent;
     location / {
         proxy_pass http://website:5000;
 
