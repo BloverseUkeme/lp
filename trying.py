@@ -95,34 +95,6 @@
 # data = json.load(f)
 
 
-from base64 import encode
-import encodings
-import json
-   
-# Data to be written
-dictionary = {
-    "name" : "yguo",
-    "rollno" : 56,
-    "cgpa" : 8.6,
-    "phonenumber" : "9976770500"
-}
-   
-with open("sample.txt", "a+") as outfile:
-    json.dump(dictionary, outfile)
-
-
-with open("sample.txt", "r") as outfile:
-    # aa = [json.loads(item) for item in outfile]
-    import re
-    aa = outfile.read()
-
-    aa = aa.split("}{")
-    # aa = '[' + re.sub(r'\'}\s\{', '},{', aa) + ']' 
-    # aa = json.loads(aa)
-
-
-print(aa)
-
 
 # https://express.adobe.com/sp/design/post/urn:aaid:sc:EU:6b3aface-541b-4828-b266-213ae0f7db01?workflow=quicktask
 

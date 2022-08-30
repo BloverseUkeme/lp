@@ -3,10 +3,10 @@ from landing_page.views import lpage_bp
 from celery import Celery
 from decouple import config as env_config
 
-from landing_page.extensions import oauth, mail
+from landing_page.extensions import oauth
 
 
-MAIL_PASSWORD= env_config("MAIL_PASSWORD")
+# MAIL_PASSWORD= env_config("MAIL_PASSWORD")
 
 
 
@@ -37,13 +37,13 @@ def create_app(settings_override=None):
     
     app.secret_key = "lpage"
 
-    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-    # app.config['MAIL_PORT'] = 587
-    app.config['MAIL_PORT'] = 465
-    app.config['MAIL_USE_TLS'] = False
-    app.config['MAIL_USE_SSL'] = True
-    app.config['MAIL_USERNAME'] = 'no-reply@bloverse.com'
-    app.config['MAIL_PASSWORD'] = MAIL_PASSWORD 
+    # app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    # # app.config['MAIL_PORT'] = 587
+    # app.config['MAIL_PORT'] = 465
+    # app.config['MAIL_USE_TLS'] = False
+    # app.config['MAIL_USE_SSL'] = True
+    # app.config['MAIL_USERNAME'] = 'no-reply@bloverse.com'
+    # app.config['MAIL_PASSWORD'] = MAIL_PASSWORD 
 
 
 
@@ -54,34 +54,34 @@ def create_app(settings_override=None):
 
 
 
-def create_celery_app(app=None):
-    """
-    Create a new Celery object and tie together the Celery config to the app's
-    config. Wrap all tasks in the context of the application.
+# def create_celery_app(app=None):
+#     """
+#     Create a new Celery object and tie together the Celery config to the app's
+#     config. Wrap all tasks in the context of the application.
 
-    :param app: Flask app
-    :return: Celery app
-    """
-    app = app or create_app()
+#     :param app: Flask app
+#     :return: Celery app
+#     """
+#     app = app or create_app()
 
-    celery = Celery(app.import_name, 
-                    broker=app.config['CELERY_BROKER_URL'],
-                    backend_url=app.config["CELERY_RESULT_BACKEND"],
-                    include=CELERY_TASK_LIST)
+#     celery = Celery(app.import_name, 
+#                     broker=app.config['CELERY_BROKER_URL'],
+#                     backend_url=app.config["CELERY_RESULT_BACKEND"],
+#                     include=CELERY_TASK_LIST)
 
-    celery.conf.update(app.config)
+#     celery.conf.update(app.config)
 
-    TaskBase = celery.Task
+#     TaskBase = celery.Task
 
-    class ContextTask(TaskBase):
-        abstract = True
+#     class ContextTask(TaskBase):
+#         abstract = True
 
-        def __call__(self, *args, **kwargs):
-            with app.app_context():
-                return TaskBase.__call__(self, *args, **kwargs)
+#         def __call__(self, *args, **kwargs):
+#             with app.app_context():
+#                 return TaskBase.__call__(self, *args, **kwargs)
 
-    celery.Task = ContextTask
-    return celery
+#     celery.Task = ContextTask
+#     return celery
 
 
 
@@ -93,6 +93,6 @@ def extensions(app):
     :return: None
     """
     oauth.init_app(app)
-    mail.init_app(app)
+    # mail.init_app(app)
     
     return None

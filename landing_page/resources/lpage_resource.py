@@ -4,9 +4,6 @@ from decouple import config as env_config
 from landing_page.extensions import oauth
 
 
-
-
-
 CONSUMER_KEY = env_config("CONSUMER_KEY") 
 CONSUMER_SECRET = env_config("CONSUMER_SECRET") 
 
@@ -72,18 +69,22 @@ class Twitter(Resource):
 
 class Twitter_Oauth(Resource):
     def get(self):
-        # from landing_page.save_email import save_twitter_handle_to_db
         from landing_page.save_email import register_twitter_handle_to_db
 
         token = oauth.twitter.authorize_access_token()
         resp = oauth.twitter.get('account/verify_credentials.json?include_email=true')
         profile = resp.json()
+        print(profile)
     
 
         handle = profile.get("screen_name")
-        email = profile.get("email")
-        # result = save_twitter_handle_to_db(handle, email)
-        result = register_twitter_handle_to_db(handle, email)
+        username = profile.get("name", "NA")
+        profile_image = profile.get("profile_image_url", "NA")
+        profile_bio = profile.get("description", "NA")
+        verified = profile.get("verified", "NA")
+        
+        # email = profile.get("email")
+        result = register_twitter_handle_to_db(handle, username, profile_image, profile_bio, verified)
 
         return result
 
